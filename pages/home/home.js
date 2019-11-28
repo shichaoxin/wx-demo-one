@@ -1,66 +1,102 @@
-// pages/home/home.js
+const getTitleServices = require('../services/getTitelServices');
+
+
+var touchStartPosition = 0;//触摸时的原点
+const index = 0;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    titleList: [
+      {
+        name: '最新电影',
+        id: '1',
+      },
+      {
+        name: '推荐电影',
+        id: '2'
+      },
+      {
+        name: '即将上映',
+        id: '3',
+      },
+      {
+        name: '有待开发',
+        id: '4'
+      }
+    ],
+    imgId: '',
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
 
+  async onLoad() {
+    // getTitleServices.getTilteMessage().then((val) => {
+    //   console.log(val);
+    // })
+    // this.index = this.data.titleList.length;
+    this.index = 0;
+    this.data.titleList[0].corlorName = 'corlorName';
+    this.setData({ titleList: this.data.titleList });
+    this.setData({ imgId: this.data.titleList[0].id });
+    const result = await getTitleServices.getTilteMessage();
+  },
+  getChange(e) {
+    this.data.titleList.forEach((e) => {
+      e.corlorName = ' ';
+    });
+    this.data.titleList[e.currentTarget.id].corlorName = 'corlorName';
+    this.index = e.currentTarget.id;
+    this.setData({
+      titleList: this.data.titleList,
+      imgId: e.currentTarget.dataset.item.id
+    });
+  },
+  touchStart(e) {
+    console.log('开始滑动', e);
+    touchStartPosition = e.touches[0].pageX; // 获取触摸时的原点
+  },
+  touchEnd(e) {
+    console.log('滑动结束', e);
+    var touchMove = e.changedTouches[0].pageX;
+    // 向左滑动   
+    if (touchMove - touchStartPosition <= -40) {
+      //执行切换页面的方法
+      console.log("向左滑动");
+      if (this.index === 0) {
+        return;
+      } else {
+        this.index--;
+        this.data.titleList.forEach((e) => {
+          e.corlorName = ' ';
+        });
+        this.data.titleList[this.index].corlorName = 'corlorName';
+        this.setData({
+          titleList: this.data.titleList,
+          imgId: this.data.titleList[this.index].id
+        });
+      }
+    }
+    // 向右滑动   
+    if (touchMove - touchStartPosition >= 40) {
+      //执行切换页面的方法
+      console.log("向右滑动");
+      if (this.index > this.data.titleList.length - 2) {
+        return;
+      } else {
+        this.index ++;
+        this.data.titleList.forEach((e) => {
+          e.corlorName = ' ';
+        });
+        this.data.titleList[this.index].corlorName = 'corlorName';
+        this.setData({
+          titleList: this.data.titleList,
+          imgId: this.data.titleList[this.index].id
+        });
+      }
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
-})
+});

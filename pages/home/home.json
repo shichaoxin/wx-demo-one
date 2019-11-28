@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "img-show": "/pages/imgshow/imgshow"
+  },
+  "navigationBarTitleText": "最新视频"
 }

@@ -1,0 +1,8 @@
+<!--pages/details/details.wxml-->
+<view class="" hover-class="none" hover-stop-propagation="false">
+    <view class="" hover-class="none" hover-stop-propagation="false">
+        <view class="img-size">
+          <image  wx:if="{{moviesInfo.img}}"  src="{{moviesInfo.img}}"></image>
+        </view>
+    </view>
+</view>

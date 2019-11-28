@@ -1,0 +1,15 @@
+<!--pages/imgshow.wxml-->
+<view class="" hover-class="none" hover-stop-propagation="false">
+   <view wx:if="{{imgId === '1'}}">
+      <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{dataLit}}" wx:for-item="item">
+          <swiper-item>
+            <view class="swiper-item" data-item="{{item}}" bindtap = "chooseImg">
+             <view>{{item.name}}</view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+   </view>
+</view>

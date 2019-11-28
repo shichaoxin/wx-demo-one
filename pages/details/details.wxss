@@ -1,0 +1,6 @@
+/* pages/details/details.wxss */
+.img-size {
+    width: 100%;
+    height: 340rpx;
+    border: 1px solid #f2784b;
+}

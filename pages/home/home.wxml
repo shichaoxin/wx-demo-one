@@ -1,2 +1,15 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<view>
+   <view class="container_title">
+       <view class="title" wx:for="{{titleList}}"  wx:for-item="item" wx:for-index="index"> 
+            <text bindtap = "getChange" class="{{item.corlorName}}" data-item="{{item}}" id="{{index}}">{{item.name}}</text>
+       </view>
+   </view>
+   
+   <view class="" hover-class="none" hover-stop-propagation="false">
+       <img-show imgId="{{imgId}}"></img-show>
+   </view>
+</view>
+<view  bindtouchstart="touchStart" bindtouchend="touchEnd" class="slide_container">
+
+1111
+</view>
