@@ -1,6 +1,6 @@
 const requestUrl = {
     // 获取头部信息接口
-    getTitle: '/ap1/v1/getTitle'
+    getTitle: '/api/v1/titelLiist'
 };
 
 // export default requestUrl;

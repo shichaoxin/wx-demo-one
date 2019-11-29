@@ -1,11 +1,21 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
+    let menuButtonObject = wx.getMenuButtonBoundingClientRect();
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    wx.getSystemInfo({
+      success: (res) => {
+        let statusBarHeight = res.statusBarHeight,
+          navTop = menuButtonObject.top, //胶囊按钮与顶部的距离
+          navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2; //导航高度
+        this.globalData.navHeight = navHeight;
+        this.globalData.navTop = navTop;  
+        this.globalData.windowHeight = res.windowHeight;
+      },
+    })
     // 登录
     wx.login({
       success: res => {
@@ -28,12 +38,14 @@ App({
                 this.userInfoReadyCallback(res)
               }
             }
-          })
+          });
         }
       }
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    share: false, // 分享默认为false
+    navTop: 0 // 导航栏高度
   }
 })

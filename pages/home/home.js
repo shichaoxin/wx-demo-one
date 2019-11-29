@@ -1,6 +1,6 @@
 const getTitleServices = require('../services/getTitelServices');
 
-
+const app = getApp()
 var touchStartPosition = 0;//触摸时的原点
 const index = 0;
 
@@ -10,25 +10,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    titleList: [
-      {
-        name: '最新电影',
-        id: '1',
-      },
-      {
-        name: '推荐电影',
-        id: '2'
-      },
-      {
-        name: '即将上映',
-        id: '3',
-      },
-      {
-        name: '有待开发',
-        id: '4'
-      }
-    ],
+    titleList: [],
     imgId: '',
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '我的页面', //导航栏 中间的标题
+    },
+    height: app.globalData.height * 2 + 20  // 此页面 页面内容距最顶部的距离
   },
 
 
@@ -38,10 +26,12 @@ Page({
     // })
     // this.index = this.data.titleList.length;
     this.index = 0;
+    const result = await getTitleServices.getTilteMessage();
+    this.setData({ titleList: result });
+    console.log(this.data.titleList);
     this.data.titleList[0].corlorName = 'corlorName';
     this.setData({ titleList: this.data.titleList });
-    this.setData({ imgId: this.data.titleList[0].id });
-    const result = await getTitleServices.getTilteMessage();
+    this.setData({ imgId: this.data.titleList[0]._id });
   },
   getChange(e) {
     this.data.titleList.forEach((e) => {
@@ -51,7 +41,7 @@ Page({
     this.index = e.currentTarget.id;
     this.setData({
       titleList: this.data.titleList,
-      imgId: e.currentTarget.dataset.item.id
+      imgId: e.currentTarget.dataset.item._id
     });
   },
   touchStart(e) {
@@ -75,7 +65,7 @@ Page({
         this.data.titleList[this.index].corlorName = 'corlorName';
         this.setData({
           titleList: this.data.titleList,
-          imgId: this.data.titleList[this.index].id
+          imgId: this.data.titleList[this.index]._id
         });
       }
     }
@@ -86,14 +76,14 @@ Page({
       if (this.index > this.data.titleList.length - 2) {
         return;
       } else {
-        this.index ++;
+        this.index++;
         this.data.titleList.forEach((e) => {
           e.corlorName = ' ';
         });
         this.data.titleList[this.index].corlorName = 'corlorName';
         this.setData({
           titleList: this.data.titleList,
-          imgId: this.data.titleList[this.index].id
+          imgId: this.data.titleList[this.index]._id
         });
       }
     }

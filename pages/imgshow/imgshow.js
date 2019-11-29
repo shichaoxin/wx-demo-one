@@ -50,7 +50,7 @@ Component({
 
   observers: {
     imgId(e) {
-      // console.log(e);
+      console.log(e);
     }
   }
 })

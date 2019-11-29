@@ -1,6 +1,6 @@
 <!--pages/imgshow.wxml-->
 <view class="" hover-class="none" hover-stop-propagation="false">
-   <view wx:if="{{imgId === '1'}}">
+   <view wx:if="{{imgId === '5de0849c921deb24f8f3319c'}}">
       <swiper indicator-dots="{{indicatorDots}}"
         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for="{{dataLit}}" wx:for-item="item">

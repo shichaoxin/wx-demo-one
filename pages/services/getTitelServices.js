@@ -10,16 +10,13 @@ const BaseUrl = configUrl.baseUrl;
 
 const getTitleServices = {
     // 获取标题信息
-    getTilteMessage() {
+  async getTilteMessage() {
         const url = BaseUrl + requestUrl.getTitle;
-        return new Promise((resolve, reject) => {
-            resolve(httpClient.request(url, 'get'));
-        });
+        // return new Promise((resolve, reject) => {
+        //     resolve(httpClient.request(url, 'get'));
+        // });
+        return await httpClient.request(url, 'get');
     }
-//    async getTilteMessage() {
-//         const url = requestUrl.getTitle;
-//         return await httpClient.request(url, 'get');
-//     }
 }
 
 

@@ -1,7 +1,7 @@
 <view>
    <view class="container_title">
        <view class="title" wx:for="{{titleList}}"  wx:for-item="item" wx:for-index="index"> 
-            <text bindtap = "getChange" class="{{item.corlorName}}" data-item="{{item}}" id="{{index}}">{{item.name}}</text>
+            <text bindtap = "getChange" class="{{item.corlorName}}" data-item="{{item}}" id="{{index}}">{{item.titleName}}</text>
        </view>
    </view>
    
@@ -10,6 +10,5 @@
    </view>
 </view>
 <view  bindtouchstart="touchStart" bindtouchend="touchEnd" class="slide_container">
-
-1111
+<view>滑动区域</view>
 </view>
