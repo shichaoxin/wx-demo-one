@@ -1,6 +1,107 @@
 /* pages/details/details.wxss */
+
 .img-size {
-    width: 100%;
-    height: 340rpx;
-    border: 1px solid #f2784b;
+  width: 100%;
+  height: 400rpx;
+  overflow: hidden;
+}
+
+.movice_details {
+  display: flex;
+  width: 99%;
+  margin: auto;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.movices_desc {
+  margin-top: 10rpx;
+  width: 99%;
+  margin: auto;
+  font-size: 35rpx;
+  color: #ddd;
+}
+
+.line {
+  margin-top: 10rpx;
+  width: 100%;
+  height: 5rpx;
+  background-color: #e3e3e3;
+}
+
+.contentView {
+  width: 100%;
+  margin-top: 40rpx;
+}
+
+.textarea_bg {
+  padding: 0 25rpx;
+  background-color: #fff;
+}
+
+textarea {
+  width: 700rpx;
+  padding: 10rpx 10rpx;
+  border: 1px solid #ddd;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  background-color: #f2784b;
+}
+
+.fun_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.buttonshare {
+  display: block;
+  padding: 0;
+  font-weight: 500;
+  margin-top: 40rpx;
+}
+
+button:not([size='mini']) {
+  width: 100rpx;
+}
+
+.showModel {
+  background: #ddd;
+  opacity: 0.5;
+}
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+/*对话框 */
+
+.commodity_attr_box {
+  height: 500rpx;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+}
+
+.submit_button {
+  margin-top: 10rpx;
 }

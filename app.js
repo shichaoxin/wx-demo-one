@@ -5,17 +5,7 @@ App({
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-    wx.getSystemInfo({
-      success: (res) => {
-        let statusBarHeight = res.statusBarHeight,
-          navTop = menuButtonObject.top, //胶囊按钮与顶部的距离
-          navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2; //导航高度
-        this.globalData.navHeight = navHeight;
-        this.globalData.navTop = navTop;  
-        this.globalData.windowHeight = res.windowHeight;
-      },
-    })
+    wx.setStorageSync('logs', logs)  
     // 登录
     wx.login({
       success: res => {
@@ -31,7 +21,6 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -45,7 +34,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    share: false, // 分享默认为false
-    navTop: 0 // 导航栏高度
+    share: true, // 分享默认为false
+    statusBarHeight: 0,
+    titleBarHeight: 0
   }
 })

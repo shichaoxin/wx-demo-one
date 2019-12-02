@@ -1,0 +1,12 @@
+<block>
+  <scroll-view class="movicesInfo" scroll-y="true">
+    <view wx:for="{{evenationList}}" wx:for-item="item" wx:for-index="index">
+      <view>
+        <image style="width:100rpx;height:100rpx;border-radius:50%;border;1px solid #f2784b" src="{{item.evenationImg}}"></image>
+      </view>
+      <view>{{item.evenationPer}}</view>
+      <view>{{item.time}}</view>
+      <view>{{item.contentText}}</view>
+    </view>
+  </scroll-view>
+</block>

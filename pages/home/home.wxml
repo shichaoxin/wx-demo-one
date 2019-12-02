@@ -1,14 +1,21 @@
+<!-- <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="首页"
+>
+</navigation> -->
+
 <view>
-   <view class="container_title">
-       <view class="title" wx:for="{{titleList}}"  wx:for-item="item" wx:for-index="index"> 
-            <text bindtap = "getChange" class="{{item.corlorName}}" data-item="{{item}}" id="{{index}}">{{item.titleName}}</text>
-       </view>
-   </view>
-   
-   <view class="" hover-class="none" hover-stop-propagation="false">
-       <img-show imgId="{{imgId}}"></img-show>
-   </view>
+  <view class="container_title">
+    <view class="title" wx:for="{{titleList}}" wx:for-item="item" wx:for-index="index">
+      <text bindtap="getChange" class="{{item.corlorName}}" data-item="{{item}}" id="{{index}}">{{item.titleName}}</text>
+    </view>
+  </view>
+
+  <view class="" hover-class="none" hover-stop-propagation="false">
+    <img-show imgId="{{imgId}}"></img-show>
+  </view>
 </view>
-<view  bindtouchstart="touchStart" bindtouchend="touchEnd" class="slide_container">
-<view>滑动区域</view>
+<view bindtouchstart="touchStart" bindtouchend="touchEnd" class="slide_container">
+  <view>滑动区域</view>
 </view>

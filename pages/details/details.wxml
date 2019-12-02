@@ -1,8 +1,52 @@
-<!--pages/details/details.wxml-->
-<view class="" hover-class="none" hover-stop-propagation="false">
-    <view class="" hover-class="none" hover-stop-propagation="false">
-        <view class="img-size">
-          <image  wx:if="{{moviesInfo.img}}"  src="{{moviesInfo.img}}"></image>
-        </view>
+<view class="{{showModel}}">
+  <view class="img-size">
+    <image wx:if="{{moviesInfo.m_img}}" src="{{moviesInfo.m_img}}"></image>
+  </view>
+  <block>
+    <view class="movice_details">
+      <view class="movice_top">
+        <view>名称：{{moviesInfo.m_name}}</view>
+        <view>价格：{{moviesInfo.m_price}}</view>
+      </view>
+
+      <view class="movice_bottom">
+        <view>上映时间：{{moviesInfo.m_time}}</view>
+        <view>豆瓣分数:{{moviesInfo.m_evenation}}</view>
+      </view>
     </view>
+  </block>
+  <view class="movices_desc">
+    <text>描述</text>：{{moviesInfo.m_desc}}
+  </view>
+  <view class="line"></view>
+  <!-- 电影评论 -->
+</view>
+<block>
+  <comment movicesId="{{moviesInfo._id}}"></comment>
+</block>
+<!-- 底部区域 -->
+<view class="footer">
+  <view class="fun_footer">
+    <view catchtap="openComment">品论</view>
+    <view>点赞</view>
+    <view>
+      <button class="buttonshare" data-id="shareBtn" open-type="share" plain="true" style="border:none">分享</button>
+    </view>
+  </view>
+</view>
+<!-- 弹窗 -->
+<!--屏幕背景变暗的背景  -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <!-- 添加品论 -->
+  <view class="contentView">
+    <view class="textarea_bg">
+      <form bindsubmit="submit">
+        <textarea style="height: 7em" maxlength="-1" name="textarea" />
+        <button form-type="submit" type="primary" size="mini" class="submit_button">提交 </button>
+      </form>
+      <!-- <text style="float: right">{{evenationText.length}}/100</text> -->
+    </view>
+  </view>
 </view>
