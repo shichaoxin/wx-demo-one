@@ -1,5 +1,6 @@
+
 <view class="center" hover-class="none" hover-stop-propagation="false">
-  <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+  <image bindtap="bindViewTap" class="userinfo-avatar" src="{{imgInfo}}" mode="cover"></image>
 </view>
 <view class="container_view">
   <view class="container_item" wx:for="{{userList}}" wx:for-item="item" wx:for-index="index" bindtap="chooseList" data-item="{{item}}">

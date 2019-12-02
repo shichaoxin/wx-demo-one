@@ -1,12 +1,25 @@
 <block>
   <scroll-view class="movicesInfo" scroll-y="true">
-    <view wx:for="{{evenationList}}" wx:for-item="item" wx:for-index="index">
-      <view>
-        <image style="width:100rpx;height:100rpx;border-radius:50%;border;1px solid #f2784b" src="{{item.evenationImg}}"></image>
+    <view wx:for="{{evenationList}}" wx:if="{{evenationList.length !== 0}}" wx:for-item="item" wx:for-index="index" class="movices_conter">
+
+      <view class="evenation_info">
+
+        <view>
+          <image style="width:100rpx;height:100rpx;border-radius:50%;border;1px solid #f2784b" src="             {{item.evenationImg}}">
+          </image>
+        </view>
+
+        <view class="movice_user">
+          <view>{{item.evenationPer}}</view>
+          <view>{{item.time}}</view>
+        </view>
+
       </view>
-      <view>{{item.evenationPer}}</view>
-      <view>{{item.time}}</view>
       <view>{{item.contentText}}</view>
+      <view class="line"></view>
+    </view>
+    <view class="noData" wx:if="{{evenationList.length === 0}}">
+      请添加评论
     </view>
   </scroll-view>
 </block>

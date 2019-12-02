@@ -1,0 +1,26 @@
+<!-- 场地选择 -->
+<view class="picker-container">
+  <picker class="picker" mode="selector" range="{{objectArray}}" range-key="name" value="{{index}}" bindchange="bindPickerChange">
+    <view class="picker">
+      选择影院：
+      <text class="word">{{objectArray[index].name}}</text>
+    </view>
+    <view class="line"></view>
+  </picker>
+</view>
+
+<!-- 时间选择 -->
+<view class="picker-container">
+  <picker class="picker" 
+  fields="day"
+   mode="date"
+    value="{{dateValue}}" 
+    start="{{dateStart}}"
+    bindchange="dateChange">
+    <view class="picker">
+       选择时间：
+     <text class="word">{{dateValue}}</text>
+    </view>
+    <view class="line"></view>
+  </picker>
+</view>

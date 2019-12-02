@@ -1,7 +1,5 @@
 /* pages/details/details.wxss */
-
 .img-size {
-  width: 100%;
   height: 400rpx;
   overflow: hidden;
 }
@@ -13,15 +11,17 @@
   flex-direction: row;
   justify-content: space-between;
 }
-
 .movices_desc {
   margin-top: 10rpx;
   width: 99%;
   margin: auto;
   font-size: 35rpx;
   color: #ddd;
+  height: 40rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
-
 .line {
   margin-top: 10rpx;
   width: 100%;

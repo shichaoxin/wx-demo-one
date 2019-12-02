@@ -7,7 +7,12 @@ Component({
     movicesId: {
       type: String,
       value: ''
+    },
+    refresh: {
+      type: Boolean,
+      value: false,
     }
+
   },
 
   /**
@@ -31,7 +36,16 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    async getInit(e) {
+      const result = await servicesMovies.getmoviesInfoMessage(e);
+      if (result) {
+        this.setData({
+          evenationList: result.reverse()
+        });
+        // 向父组件发送事件关闭弹窗
+        this.triggerEvent('closeModal', true);
+      }
+    }
   },
   /**
    * 监听属性的变化
@@ -39,13 +53,16 @@ Component({
   observers: {
     async movicesId(e) {
       if (!e) {
-        console.log(e, '=======observe===============')
         return;
       } else {
-        const result = await servicesMovies.getmoviesInfoMessage(e);
-        this.setData({
-          evenationList: result.reverse()
-        });
+        await this.getInit(e);
+      }
+    },
+    async refresh(newValue) {
+      if (newValue) {
+        await this.getInit(this.properties.movicesId);
+      } else {
+        return;
       }
     }
   }

@@ -4,7 +4,9 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/details/details",
-    "pages/centers/centers"
+    "pages/centers/centers",
+    "pages/buytickets/buytickets",
+    "pages/purchse/purchse"
   ],
   "window": {
     "backgroundTextStyle": "dark",

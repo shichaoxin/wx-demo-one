@@ -23,7 +23,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.9.3",
 	"appid": "wxdadab038720eeda3",
-	"projectname": "demo_one",
+	"projectname": "wx-movies",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

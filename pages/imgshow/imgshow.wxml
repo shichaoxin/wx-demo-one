@@ -4,7 +4,7 @@
     <block wx:for="{{dataLit}}" wx:for-item="item">
       <swiper-item>
         <view class="swiper-item" data-item="{{item}}" bindtap="chooseImg">
-          <image src="{{item.m_img}}">
+          <image  src="{{item.m_img}}">
           </image>
         </view>
       </swiper-item>

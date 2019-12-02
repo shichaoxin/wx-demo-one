@@ -1,0 +1,13 @@
+.picker-container {
+  padding: 10rpx;
+}
+
+.word {
+  margin-left: 40rpx;
+}
+.line {
+  width: 100%;
+  height: 5rpx;
+  background-color: #ddd;
+  margin-top: 10rpx;
+}

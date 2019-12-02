@@ -12,7 +12,8 @@ Page({
     showModel: '',
     transform: '',
     showDialog: false,
-    evenationMoviceId: ''
+    evenationMoviceId: '',
+    refresh: false,
   },
 
   /**
@@ -105,12 +106,6 @@ Page({
       })
     }.bind(this), 200)
   },
-
-  // /  getValue(e) {
-  //     this.setData({
-  //       evenationText: e.detail.value.textarea
-  //     })
-  //   },
   async submit(e) {
     this.hideModal();
     const time = pageServices.currentTime();
@@ -126,13 +121,32 @@ Page({
     evenaTionModel.evenationPeoId = '5de0793c9fa42c0a78badf85';
     evenaTionModel.evenationImg = userInfo.avatarUrl;
     const data = await services.addEvenation(evenaTionModel);
-    wx.showToast({
+    wx.showLoading({
       title: '提交中  ...',
-      icon: 'loading',
-      duration: 1500,
     });
     if (data) {
-      wx.hideLoading();
+      this.setData({
+        refresh: true
+      })
     }
+  },
+  closeModal() {
+    wx.hideLoading();
+  },
+
+  // 收藏电影----调用收藏的接口
+  collect(e) {
+    console.log(e)
+    wx.showToast({
+      title: '收藏成功', // 标题
+      icon: 'success', // 图标类型，默认success
+      duration: 3000 // 提示窗停留时间，默认1500ms
+    })
+  },
+  // 购买电影
+  purchse() {
+    wx.navigateTo({
+      url: '../purchse/purchse?params=' + this.data.evenationMoviceId
+    })
   }
 });

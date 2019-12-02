@@ -6,7 +6,7 @@
     <view class="movice_details">
       <view class="movice_top">
         <view>名称：{{moviesInfo.m_name}}</view>
-        <view>价格：{{moviesInfo.m_price}}</view>
+        <view>价格：{{moviesInfo.m_price}}￥</view>
       </view>
 
       <view class="movice_bottom">
@@ -22,13 +22,14 @@
   <!-- 电影评论 -->
 </view>
 <block>
-  <comment movicesId="{{moviesInfo._id}}"></comment>
+  <comment movicesId="{{moviesInfo._id}}" refresh="{{refresh}}" bind:closeModal="closeModal"></comment>
 </block>
 <!-- 底部区域 -->
 <view class="footer">
   <view class="fun_footer">
     <view catchtap="openComment">品论</view>
-    <view>点赞</view>
+    <view bindtap="purchse">购买</view>
+    <view bindtap="collect">收藏</view>
     <view>
       <button class="buttonshare" data-id="shareBtn" open-type="share" plain="true" style="border:none">分享</button>
     </view>

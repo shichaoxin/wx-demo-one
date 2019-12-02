@@ -1,8 +1,47 @@
 /* pages/components/comment.wxss */
+
 .movicesInfo {
   width: 99%;
   margin: auto;
   margin-top: 10rpx;
-  height: 400rpx;
-  border:1px solid #ddd;
+  overflow: hidden;
+  height: 470rpx;
+  border: 1px solid #ddd;
+}
+
+.evenation_info {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10rpx;
+}
+
+.movice_user {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+}
+
+.movices_conter {
+  padding: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.line {
+  width: 100%;
+  height: 5rpx;
+  background-color: #ddd;
+  margin-top: 5rpx;
+}
+
+.evenation_word {
+  font-size: 30rpx;
+}
+
+.noData {
+  text-align: center;
+  line-height: 470rpx;
 }
