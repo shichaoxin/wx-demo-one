@@ -1,3 +1,4 @@
+const pageServices = require('../../utils/page-services.js');
 const app = getApp()
 Page({
 
@@ -73,29 +74,17 @@ Page({
     var that = this;
     wx.showActionSheet({
       itemList: ['选择文件', '拍照或相册'],
-      success(res) {
+      async success(res) {
         // res.tapIndex 为itemList中的值得索引
         console.log(res.tapIndex);
         if (res.tapIndex == 0) {
-          // 选择对话再选择文件
-          wx.chooseMessageFile({
-            count: 10, //能选择文件的数量
-            type: 'file', //能选择文件的类型,我这里只允许上传文件.还有视频,图片,或者都可以
-            success(res) {
-              console.log(res, '提交的日志')
-              if (res.tempFiles.length > 0) {
-                //循环比较
-                // for (var i = 0; i < res.tempFiles.length; i++) {
-                //   var newupfilelist = that.data.allpath.concat(res.tempFiles[i].path) + '';
-                //   var newfilename = that.data.allfilename.concat(res.tempFiles[i].name) + '''
-                //   that.setData({
-                //     allpath: newupfilelist, //将文件的路径保存在页面的变量上,方便 wx.uploadFile调用
-                //     allfilename: newfilename //渲染到wxml方便用户知道自己选择了什么文件
-                //   })
-                // }
-              }
-            }
-          })
+          // 上传文件
+          // const data = await  pageServices.chooseMessageFile().then(val=>{
+          //     console.log(val, '=======输出的是==========')
+          //     });
+          const data = await pageServices.upLoadingFile();
+          console.log(data);
+
         }
       }
     });
