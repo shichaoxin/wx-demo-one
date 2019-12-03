@@ -1,4 +1,4 @@
-const getTitleServices = require('../services/services-movies.js');
+const servicesUtils = require('../services/services-movies.js');
 
 
 const app = getApp()
@@ -13,6 +13,9 @@ Page({
   data: {
     titleList: [],
     imgId: '',
+    movicesList: [],
+    currentPage: 1,
+    totalList: []
   },
 
 
@@ -22,7 +25,7 @@ Page({
     // })
     // this.index = this.data.titleList.length;
     this.index = 0;
-    const result = await getTitleServices.getTilteMessage();
+    const result = await servicesUtils.getTilteMessage();
     this.setData({
       titleList: result
     });
@@ -31,8 +34,9 @@ Page({
       titleList: this.data.titleList,
       imgId: this.data.titleList[0]._id
     });
+    await this.getInit(this.data.imgId);
   },
-  getChange(e) {
+  async getChange(e) {
     this.data.titleList.forEach((e) => {
       e.corlorName = ' ';
     });
@@ -42,11 +46,12 @@ Page({
       titleList: this.data.titleList,
       imgId: e.currentTarget.dataset.item._id
     });
+    await this.getInit(this.data.imgId);
   },
   touchStart(e) {
     touchStartPosition = e.touches[0].pageX; // 获取触摸时的原点
   },
-  touchEnd(e) {
+  async touchEnd(e) {
     var touchMove = e.changedTouches[0].pageX;
     // 向左滑动   
     if (touchMove - touchStartPosition <= -40) {
@@ -63,6 +68,7 @@ Page({
           titleList: this.data.titleList,
           imgId: this.data.titleList[this.index]._id
         });
+        await this.getInit(this.data.imgId);
       }
     }
     // 向右滑动   
@@ -80,18 +86,35 @@ Page({
           titleList: this.data.titleList,
           imgId: this.data.titleList[this.index]._id
         });
+        await this.getInit(this.data.imgId);
       }
     }
   },
 
   // 下拉刷新
-  onPullDownRefresh(e) {
+  async onPullDownRefresh(e) {
     wx.showNavigationBarLoading();
-    setTimeout(() => {
+    this.data.currentPage++;
+
+    const pageInfo = {};
+    pageInfo.page = this.data.currentPage;
+    pageInfo.size = 5;
+    pageInfo.titleId = this.data.imgId;
+    let result = await servicesUtils.getMoviceByPageAndSizeAndTitleId(pageInfo);
+    this.setData({
+      movicesList: [...this.data.movicesList, ...result.val]
+    });
+    console.log(this.data.movicesList, '===========');
+    if (result) {
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
-    }, 1000)
-    console.log(e)
+    }
+    if(result.val.length === 0) {
+      wx.showToast({
+        icon: 'none',
+        title: '已经到底了....',
+      })
+    }
   },
 
   // 转发分享
@@ -133,4 +156,19 @@ Page({
       }
     }
   },
+  // 获取电影数据
+  async getInit(titleId) {
+    const pageInfo = {};
+    pageInfo.page = 1;
+    pageInfo.size = 5;
+    pageInfo.titleId = titleId;
+    let result = await servicesUtils.getMoviceByPageAndSizeAndTitleId(pageInfo);
+    this.setData({
+      movicesList: result.val
+    });
+  },
+
+  enterInto(e) {
+    console.log(e);
+  }
 });

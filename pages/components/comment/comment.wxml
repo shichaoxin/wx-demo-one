@@ -1,6 +1,6 @@
 <block>
   <scroll-view class="movicesInfo" scroll-y="true">
-    <view wx:for="{{evenationList}}" wx:if="{{evenationList.length !== 0}}" wx:for-item="item" wx:for-index="index" class="movices_conter">
+    <view wx:for="{{evenationList}}" wx:if="{{evenationList.length !== 0}}" wx:for-item="item" wx:for-index="index" class="movices_conter" wx:key="{{item}}"> 
 
       <view class="evenation_info">
 

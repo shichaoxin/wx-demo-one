@@ -40,10 +40,14 @@ Component({
         title: '加载中',
         icon: 'loading'
       });
-      const data = await services.getMoviceByTitle(e);
+      let pageInfo = {};
+      pageInfo.page = 1;
+      pageInfo.size = 5;
+      pageInfo.titleId = e;
+      let data = await services.getMoviceByPageAndSizeAndTitleId(pageInfo);
       if (data) {
         this.setData({
-          dataLit: data
+          dataLit: data.val
         });
         wx.hideToast();
       }

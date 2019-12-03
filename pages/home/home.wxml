@@ -3,11 +3,11 @@ id='Navigation'
 show-icon='{{showIcon}}'
 title="首页"
 >
-</navigation> -->
+</navigation>  -->
 
 <view>
   <view class="container_title">
-    <view class="title" wx:for="{{titleList}}" wx:for-item="item" wx:for-index="index">
+    <view class="title" wx:for="{{titleList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
       <text bindtap="getChange" class="{{item.corlorName}}" data-item="{{item}}" id="{{index}}">{{item.titleName}}</text>
     </view>
   </view>
@@ -17,5 +17,23 @@ title="首页"
   </view>
 </view>
 <view bindtouchstart="touchStart" bindtouchend="touchEnd" class="slide_container">
-  <view>滑动区域</view>
+  <block wx:for="{{movicesList}}" wx:for-item="item" wx:key="index">
+    <scroll-view scroll-y="true">
+      <!-- 布局 -->
+      <view class="movices_Info">
+
+        <view class="movices_content">
+          <view class="movices_img">
+            <image src="{{item.m_img}}" />
+          </view>
+
+          <view class="movies_word">
+            <view>{{item.m_name}}</view>
+            <view>{{item.m_time}}</view>
+          </view>
+          <view class="moices_into" catchtap="enterInto" data-item="{{item}}"></view>
+        </view>
+      </view>
+    </scroll-view>
+  </block>
 </view>
