@@ -2,6 +2,6 @@
   "usingComponents": {
     "comment": "/pages/components/comment/comment"
   },
-  "navigationBarTitleText": "电影详情",
+  "navigationBarTitleText": "电影",
   "enablePullDownRefresh": true
 }

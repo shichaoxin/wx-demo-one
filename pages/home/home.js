@@ -170,5 +170,8 @@ Page({
 
   enterInto(e) {
     console.log(e);
+    wx.navigateTo({
+      url: '../movies/movies?moviesId=' + e.target.id,
+    })
   }
 });

@@ -6,7 +6,8 @@
     "pages/details/details",
     "pages/centers/centers",
     "pages/buytickets/buytickets",
-    "pages/purchse/purchse"
+    "pages/purchse/purchse",
+    "pages/movies/movies"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -22,6 +23,8 @@
     "list": [
       {
         "pagePath": "pages/home/home",
+        "iconPath": "pages/style/icon/all.png",
+        "selectedIconPath": "pages/style/icon/prompt-fill.png",
         "text": "首页"
       },
       {

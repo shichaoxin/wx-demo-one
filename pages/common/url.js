@@ -7,6 +7,8 @@ const requestUrl = {
   getMovicesDetail: '/api/v1/getMovicesDetail',
   // 添加评论信息
   addEvenation: '/api/v1/saveEvenation',
+  // 获取电影的评论信息
+  getMoviesMessageByMoviesId: '/api/v1/getMoviesMessageByMoviesId',
   // 根据电影的id获取电影的评论信息（包含上拉刷新）
   getMovicesByTitleIdAndPageAndSize: '/api/v1/getMovicesByTitleIdAndPageAndSize',
 };

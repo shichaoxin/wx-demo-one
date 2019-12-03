@@ -8,7 +8,7 @@ title="首页"
 <view>
   <view class="container_title">
     <view class="title" wx:for="{{titleList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-      <text bindtap="getChange" class="{{item.corlorName}}" data-item="{{item}}" id="{{index}}">{{item.titleName}}</text>
+      <text bindtap="getChange" class="{{item.corlorName}}" data-item="{{item._id}}" id="{{index}}">{{item.titleName}}</text>
     </view>
   </view>
 
@@ -31,7 +31,7 @@ title="首页"
             <view>{{item.m_name}}</view>
             <view>{{item.m_time}}</view>
           </view>
-          <view class="moices_into" catchtap="enterInto" data-item="{{item}}"></view>
+          <view class="moices_into" catchtap="enterInto" id="{{item._id}}"></view>
         </view>
       </view>
     </scroll-view>

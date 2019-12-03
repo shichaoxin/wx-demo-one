@@ -31,9 +31,9 @@ const servicesMovies = {
   },
 
   //  提交用户对电影的评价
-  async addEvenation(addEvenation) {
+  async addEvenation(addEvenationInfo) {
     const url = BaseUrl + requestUrl.addEvenation;
-    return await httpClient.request(url, 'post', addEvenation);
+    return await httpClient.request(url, 'post', addEvenationInfo);
   },
 
   // 获取电影的评论信息
