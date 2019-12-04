@@ -3,7 +3,9 @@
   <image bindtap="bindViewTap" class="userinfo-avatar" src="{{imgInfo}}" mode="cover"></image>
 </view>
 <view class="container_view">
-  <view class="container_item" wx:for="{{userList}}" wx:for-item="item" wx:for-index="index" bindtap="chooseList" data-item="{{item}}">
+  <view class="container_item" wx:for="{{userList}}" wx:for-item="item" wx:for-index="index" bindtap="chooseList" 
+  wx:key="{{index}}"
+  data-item="{{item}}">
     <view class="tab">{{item.name}}</view>
     <view class="row">-----></view>
   </view>

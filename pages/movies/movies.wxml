@@ -1,3 +1,17 @@
 <!--pages/movies/movies.wxml-->
-<text>pages/movies/movies.wxml</text>
-<text class="iconfont icon-all" style='font-size:100rpx;color:orange'></text>
+<!-- <text class="iconfont icon-all" style='font-size:100rpx;color:orange'></text> -->
+<view>
+  <view class="movice_img">
+    <image src="{{movices.m_img}}" />
+  </view>
+  <view class="movices_top">
+    <view>电影名称: {{movices.m_name}}</view>
+    <view>上映时间: {{movices.m_time}}</view>
+  </view>
+  <view class="{{movicesChamgeHeight}}">
+    <view>简介:</view>
+    <view>{{movices.m_desc}}</view>
+    <view class="xia_san_jiao" catchtap="increaseHeight" wx:if="{{changeHeight}}"></view>
+    <view class="shang_san_jiao" catchtap="descHeight" wx:if="{{!changeHeight}}"></view>
+  </view>
+</view>

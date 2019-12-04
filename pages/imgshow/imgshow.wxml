@@ -1,10 +1,10 @@
 <!--pages/imgshow.wxml-->
 <view class="" hover-class="none" hover-stop-propagation="false">
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{dataLit}}" wx:for-item="item" wx:for-index="index" wx:key="*this">
-      <swiper-item wx:if="{{item.m_swaper}}">
+  <swiper current="{{swiperIndex}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{dataLit}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <swiper-item wx:if="{{item.m_swaper}}" current="{{swiperIndex}}">
         <view class="swiper-item" data-item="{{item}}" bindtap="chooseImg">
-          <image  src="{{item.m_img}}">
+          <image src="{{item.m_img}}">
           </image>
         </view>
       </swiper-item>

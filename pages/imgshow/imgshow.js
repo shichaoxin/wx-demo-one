@@ -20,7 +20,8 @@ Component({
     autoplay: true,
     interval: 2000,
     duration: 500,
-    dataLit: []
+    dataLit: [],
+    swiperIndex: 0
   },
   /**
    * 组件的方法列表
@@ -44,6 +45,7 @@ Component({
       pageInfo.page = 1;
       pageInfo.size = 5;
       pageInfo.titleId = e;
+      this.setData({dataLit:[]})
       let data = await services.getMoviceByPageAndSizeAndTitleId(pageInfo);
       if (data) {
         this.setData({

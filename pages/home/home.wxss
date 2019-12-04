@@ -14,13 +14,10 @@
   color: red;
 }
 
-/* .slide_container {
+.slide_container {
   width: 100%;
   height: 800rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
+}
 
 .commodity_screen {
   width: 100%;

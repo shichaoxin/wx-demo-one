@@ -36,6 +36,7 @@ Page({
     });
     await this.getInit(this.data.imgId);
   },
+  // 点击选择信息 
   async getChange(e) {
     this.data.titleList.forEach((e) => {
       e.corlorName = ' ';
@@ -44,9 +45,10 @@ Page({
     this.index = e.currentTarget.id;
     this.setData({
       titleList: this.data.titleList,
-      imgId: e.currentTarget.dataset.item._id
+      imgId: e.currentTarget.dataset.item,
+      currentPage: 1
     });
-    await this.getInit(this.data.imgId);
+    await this.getInit(e.currentTarget.dataset.item);
   },
   touchStart(e) {
     touchStartPosition = e.touches[0].pageX; // 获取触摸时的原点
@@ -66,13 +68,15 @@ Page({
         this.data.titleList[this.index].corlorName = 'corlorName';
         this.setData({
           titleList: this.data.titleList,
-          imgId: this.data.titleList[this.index]._id
+          imgId: this.data.titleList[this.index]._id,
+          currentPage: 1
         });
         await this.getInit(this.data.imgId);
       }
     }
     // 向右滑动   
     if (touchMove - touchStartPosition >= 40) {
+      console.log('向右滑动')
       //执行切换页面的方法
       if (this.index > this.data.titleList.length - 2) {
         return;
@@ -84,7 +88,8 @@ Page({
         this.data.titleList[this.index].corlorName = 'corlorName';
         this.setData({
           titleList: this.data.titleList,
-          imgId: this.data.titleList[this.index]._id
+          imgId: this.data.titleList[this.index]._id,
+          currentPage: 1
         });
         await this.getInit(this.data.imgId);
       }
@@ -104,7 +109,6 @@ Page({
     this.setData({
       movicesList: [...this.data.movicesList, ...result.val]
     });
-    console.log(this.data.movicesList, '===========');
     if (result) {
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
@@ -113,7 +117,7 @@ Page({
       wx.showToast({
         icon: 'none',
         title: '已经到底了....',
-      })
+      });
     }
   },
 
@@ -173,5 +177,5 @@ Page({
     wx.navigateTo({
       url: '../movies/movies?moviesId=' + e.target.id,
     })
-  }
+  },
 });
