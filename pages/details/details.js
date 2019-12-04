@@ -45,19 +45,23 @@ Page({
       // 来自页面内转发按钮
       console.log(ops.target)
     }
-    return {
-      title: 'xx小程序',
-      path: 'pages/index/index?id=123&age=18', // 路径，传递参数到指定页面。
-      imageUrl: '../../imgs/xx.png', // 分享的封面图
-      success: function(res) {
-        // 转发成功
-        console.log("转发成功:" + JSON.stringify(res));
-      },
-      fail: function(res) {
-        // 转发失败
-        console.log("转发失败:" + JSON.stringify(res));
+    return new Promise((resolve, reject) => {
+      let object = {
+        title: 'xx小程序',
+        path: 'pages/center/center?id=123&age=18', // 路径，传递参数到指定页面。
+        // imageUrl: '../../imgs/xx.png', // 分享的封面图
+        success: function(res) {
+          // 转发成功
+          console.log("转发成功:" + JSON.stringify(res));
+        },
+        fail: function(res) {
+          // 转发失败
+          console.log("转发失败:" + JSON.stringify(res));
+        }
       }
-    }
+      console.log(object, '==============')
+    });
+    return 
   },
 
   openComment() {

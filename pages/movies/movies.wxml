@@ -1,5 +1,4 @@
 <!--pages/movies/movies.wxml-->
-<!-- <text class="iconfont icon-all" style='font-size:100rpx;color:orange'></text> -->
 <view>
   <view class="movice_img">
     <image src="{{movices.m_img}}" />
@@ -13,5 +12,18 @@
     <view>{{movices.m_desc}}</view>
     <view class="xia_san_jiao" catchtap="increaseHeight" wx:if="{{changeHeight}}"></view>
     <view class="shang_san_jiao" catchtap="descHeight" wx:if="{{!changeHeight}}"></view>
+  </view>
+  <!--演员列表  -->
+  <view class="movies_actor">
+    <scroll-view scroll-x="true" class="scroller_container">
+      <text class="actor" wx:for="123456734566787654">演员{{item}}</text>
+    </scroll-view>
+  </view>
+  <view class="container_bottom">
+    <view class="fun_footer">
+      <view>购买</view>
+      <view>喜欢</view>
+      <view>购买</view>
+    </view>
   </view>
 </view>
