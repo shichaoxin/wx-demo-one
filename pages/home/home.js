@@ -1,5 +1,5 @@
 const servicesUtils = require('../services/services-movies.js');
-
+// import servicesUtils from '../services/services-movies.js';
 
 const app = getApp()
 var touchStartPosition = 0; //触摸时的原点

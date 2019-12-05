@@ -18,5 +18,8 @@
   "homepage": "https://github.com/shichaoxin/wx-demo-one#readme",
   "dependencies": {
     "regenerator": "^0.13.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0"
   }
 }

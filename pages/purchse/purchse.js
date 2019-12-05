@@ -282,7 +282,31 @@ Page({
         e.sameObj.splice(0, 1);
       }
     });
-    console.log(app.globalData.showMovies)
+    const index = app.globalData.movicesList.findIndex((e, index) => {
+      if (e.price === item.price) {
+        return e;
+      }
+    });
+    console.log(index, '-------------------index');
+    app.globalData.movicesList.splice(index, 1);
+    let count = [];
+    app.globalData.movicesList.forEach((e) => {
+      count.push(e.price)
+    });
+    const sum = count.reduce((x, y) => x + y)
+    this.setData({
+      totalPrice: sum
+    });
+    // 删除数组的长度（根据id）
+    // app.globalData.movicesList.
+    console.log(app.globalData.movicesList, '减少-----movicesList')
+    console.log(app.globalData.showMovies, '减少')
+    this.setData({
+      chooseList: [...app.globalData.showMovies],
+      chooseFilms: [...app.globalData.movicesList],
+    });
+    console.log(this.data.chooseFilms, '购物车中的数组的长度');
+    console.log(this.data.chooseList, '弹框现实的数据')
   },
   // 统一的方法处理增加票数的逻辑问题
   commonIncrease(item) {
@@ -290,20 +314,18 @@ Page({
     // 聚合相同的电影的数组(根据对象中的name)
     let hash = {};
     let i = 0;
-    let res = [];
-    console.log(app.globalData.movicesList, '========================')
+    var res = [];
     app.globalData.movicesList.forEach((item) => {
       let name = item.name;
-      hash[name] ? res[hash[name] - 1].id.push(item) : hash[name] = ++i && res.push({
+      hash[name] ? res[hash[name] - 1].sameObj.push(item) : hash[name] = ++i && res.push({
         sameObj: [item],
         name: item.name,
         price: item.price,
-        id: item.id,
+        id: item.id
       })
     });
-    console.log(res);
-
     app.globalData.showMovies = [...res];
+    console.log(app.globalData.showMovies, '增加')
     let count = [];
     app.globalData.movicesList.forEach((e) => {
       count.push(e.price)
