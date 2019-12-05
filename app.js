@@ -35,7 +35,7 @@ App({
   globalData: {
     userInfo: null,
     share: true, // 分享默认为false
-    statusBarHeight: 0,
-    titleBarHeight: 0
+    movicesList: [],
+    showMovies: []
   }
 })

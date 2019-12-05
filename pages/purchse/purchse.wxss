@@ -67,17 +67,20 @@
 
 .outDialog {
   width: 300rpx;
-  height: 100rpx;
+  height: 80rpx;
   background: #ddd;
   position: fixed;
   right: 0px;
   z-index: 99999;
+  text-align: center;
+  line-height: 80rpx;
 }
 
 .chooseTime {
   width: 98%;
   padding: 5px;
   margin: auto;
+  border-bottom: 1px solid #f2784b;
 }
 
 .addColor {
@@ -91,4 +94,113 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+}
+
+.circle {
+  width: 50rpx;
+  height: 50rpx;
+  border: 1px solid #f2784b;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  top: 3rpx;
+  left: 80rpx;
+  font-size: 37rpx;
+  color: #f2784b;
+  text-align: center;
+  line-height: 50rpx;
+}
+
+/*
+* 自定义的弹窗样式
+*/
+
+.showMovices {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9000;
+  opacity: 0.5;
+  background: #000;
+  overflow: hidden;
+}
+
+.openDialog {
+  position: fixed;
+  z-index: 9999;
+  top: 7%;
+  width: 570rpx;
+  height: 882rpx;
+  left: 11%;
+  background-color: #f9f9f9;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.mask_content {
+  padding: 10rpx;
+  width: 100%;
+  height: 654rpx;
+  border: 1px solid #ddd;
+}
+
+.options {
+  margin-top: -2rpx;
+  display: flex;
+  width: 100%;
+  height: 200rpx;
+  border: 1px solid #ddd;
+  line-height: 200rpx;
+  text-align: center;
+}
+
+.border {
+  border: 1px solid #ddd;
+  width: 50%;
+  height: 200rpx;
+}
+
+.nodata {
+  text-align: center;
+  position: relative;
+  top: 50%;
+}
+
+.choose_container {
+width: 100%;
+height: 100rpx;
+border-bottom: 2rpx solid #ddd;
+display: flex;
+flex-direction: row;
+line-height: 60rpx;
+text-align: center;
+margin-top: 7px;
+
+}
+
+.descrice {
+  width: 60rpx;
+  height: 60rpx;
+  border: 1px solid #f2784b;
+  border-radius: 50%;
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+}
+
+.inputName {
+  width: 66%;
+  height: 60rpx;
+  border: 1px solid #ddd;
+  padding: 13rpx;
+}
+
+.increase {
+  width: 60rpx;
+  height: 60rpx;
+  border: 1px solid #f2784b;
+  border-radius: 50%;
+  margin-left: 10rpx;
+  margin-top: 10rpx;
 }

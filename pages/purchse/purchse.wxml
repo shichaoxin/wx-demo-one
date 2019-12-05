@@ -1,56 +1,78 @@
 <!-- 场地选择 -->
-<view class="picker-container">
-  <picker class="picker" mode="selector" range="{{objectArray}}" range-key="name" value="{{index}}" bindchange="bindPickerChange">
-    <view class="picker">
-      选择影院：
-      <text class="word">{{objectArray[index].name}}</text>
-    </view>
-    <view class="line"></view>
-  </picker>
-</view>
+<view style="z-index:1">
+  <view class="picker-container">
+    <picker class="picker" mode="selector" range="{{objectArray}}" range-key="name" value="{{index}}" bindchange="bindPickerChange">
+      <view class="picker">
+        选择影院：
+        <text class="word">{{objectArray[index].name}}</text>
+      </view>
+      <view class="line"></view>
+    </picker>
+  </view>
 
-<!-- 时间选择 -->
-<view class="picker-container">
-  <picker class="picker" fields="day" mode="date" value="{{dateValue}}" start="{{dateStart}}" bindchange="dateChange">
-    <view class="picker">
-      选择时间：
-      <text class="word">{{dateValue}}</text>
-    </view>
-    <view class="line"></view>
-  </picker>
-</view>
-<!-- 中间选择电影部分 -->
-<scroll-view scroll-y="true" class="scroller">
-  <view wx:for="{{movieOnShow}}" wx:for-item="item" class="{{item.color}}" wx:key="{{index}}">
-    <view class="chooseTime" bindtouchstart="touchStart" catchtouchend="touchEnd" id="{{index}}">
-      <view catchtap="chooseMovieTime" data-item="{{item}}" class="movices_container">
-        <view>
-          <view animation="{{animations}}" class="outDialog" wx:if="{{item.showDialog}}">
-            <!-- 填充 -->
-            加入购物车
+  <!-- 时间选择 -->
+  <view class="picker-container">
+    <picker class="picker" fields="day" mode="date" value="{{dateValue}}" start="{{dateStart}}" bindchange="dateChange">
+      <view class="picker">
+        选择时间：
+        <text class="word">{{dateValue}}</text>
+      </view>
+      <view class="line"></view>
+    </picker>
+  </view>
+  <!-- 中间选择电影部分 -->
+  <scroll-view scroll-y="true" class="scroller" style="z-index:-1">
+    <view wx:for="{{movieOnShow}}" wx:for-item="item" class="{{item.color}}" wx:key="{{index}}">
+      <view class="chooseTime" bindtouchstart="touchStart" catchtouchend="touchEnd" id="{{index}}">
+        <view data-item="{{item}}" class="movices_container">
+          <view>
+            <view animation="{{animations}}" class="outDialog" wx:if="{{item.showDialog}}" catchtap="chooseMovies" data-item="{{item}}">
+              <!-- 填充 -->
+              <view> 加入购物车</view>
+            </view>
+            <view>场次时间:</view>
+            <view>{{item.time}}</view>
           </view>
-
-
-          <view>场次时间:</view>
-          <view>{{item.time}}</view>
         </view>
       </view>
     </view>
+  </scroll-view>
+  <!-- 底部区域 -->
+  <view class="footer">
+    <view class="footer_fun">
+      <view class="iconfont icon-favorites-fill" style='font-size:100rpx;color: #fff'></view>
+      <view class="iconfont icon-add-cart" style='font-size:100rpx;color: #fff;position:relative' bindtap="openDialog">
+        <view class="circle">{{chooseFilms.length}}</view>
+      </view>
+    </view>
   </view>
-</scroll-view>
-<!-- 底部区域 -->
-<view class="footer">
-  <view class="footer_fun">
-    <view class="iconfont icon-favorites-fill" style='font-size:100rpx;color: #fff'></view>
-    <view class="iconfont icon-add-cart" style='font-size:100rpx;color: #fff' bindtap="openDialog"></view>
-  </view>
-</view>
 
-<!-- 弹窗 -->
+</view>
+<!-- 自定义弹窗用于显示选择电影的种类 -->
 <!--屏幕背景变暗的背景  -->
-<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!-- <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view> -->
 <!--弹出框  -->
-<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
-  <!-- 添加品论 -->
-  <!-- 添加购物车的储藏的电影 -->
+<!-- <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}"> -->
+<!-- 添加品论 -->
+<!-- 添加购物车的储藏的电影 -->
+<!-- </view> -->
+<view class="showMovices" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModalStatus}}"></view>
+<view class="openDialog" wx:if="{{showModalStatus}}">
+  <!-- 展示的内容 -->
+  <scroll-view class="mask_content" scroll-y="true">
+    <view wx:if="{{chooseList.length === 0}}" class="nodata">空空如也</view>
+    <view wx:for="{{chooseList}}" wx:key="{{index}}" wx:for-item="item" wx:for-index="index" wx:if="{{chooseList.length !== 0}}">
+      <view class="choose_container">
+        <view class="descrice" data-item="{{item}}" bindtap="descriceTickets">-</view>
+        <view class="inputName">{{item.name}} * {{item.sameObj.length}}X{{item.price}} </view>
+        <view class="increase" bindtap="increaseTickets" data-item="{{item}}">+</view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="options">
+    <view class="border" bindtap="closeMask">取 消</view>
+    <view class="border">{{totalPrice}} ￥</view>
+    <view class="border" bindtap="payMoney">支 付</view>
+  </view>
 </view>

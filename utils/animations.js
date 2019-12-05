@@ -1,28 +1,22 @@
 const animations = {
   // 显示动画 position为动画的位置是X,Y,Z
-  showAnimation(position) {
-    console.log(position)
+  showAnimation(translateX) {
     var animation = wx.createAnimation({
       duration: 800,
       timingFunction: "linear",
-      delay: 0
+      delay: 0,
     })
-    this.animation = animation
-    animation.translateX(600).step()
-    this.setData({
-      animations: animation.export(),
-      showDialog: true
-    })
-    setTimeout(function() {
-      animation.translateX(0).step()
-      this.setData({
-        animations: animation.export()
-      })
-    }.bind(this), 50);
-    return this.setData({
-      animations: animation.export(),
-      showDialog: true
-    })
+    this.animation = animation;
+    animation.currentTransform.push(translateX)
+    animation.translateX(0).step();
+    console.log(animation, '===================')
+    const Obj = {
+      start: animation.currentTransform.push(translateX),
+      end: animation.translateX(0).step()
+    }
+    const animationObj = animation.export();
+    console.log(animationObj);
+    return animationObj
   },
   // 隐藏动画
   hideAnimation(position) {

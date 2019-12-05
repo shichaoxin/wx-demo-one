@@ -3,6 +3,6 @@
     "img-show": "/pages/imgshow/imgshow",
     "navigation":"/pages/components/nav-bar/navBar"
   },
-  "navigationBarTitleText": "最新视频",
+  "navigationBarTitleText": "最新电影",
   "enablePullDownRefresh": true
 }

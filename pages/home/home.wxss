@@ -65,7 +65,7 @@
 }
 
 image {
-  margin-top: 6rpx;
+  margin-top: 3rpx;
 }
 
 .movies_word {
