@@ -1,24 +1,3 @@
-{
-  "pages": [
-    "pages/home/home",
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/details/details",
-    "pages/centers/centers",
-    "pages/buytickets/buytickets",
-    "pages/movies/movies",
-    "pages/authors/authors",
-    "pages/measuring/measuring",
-    "pages/infos/infos",
-    "pages/purchse/purchse",
-    "pages/content/content"
-  ],
-  "window": {
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#1A73E8",
-    "navigationBarTitleText": "米动健康心率监测",
-    "navigationBarTextStyle": "black"
-  },
   "tabBar": {
     "color": "#929292",
     "selectedColor": "#f2784b",
@@ -51,6 +30,3 @@
       }
     ]
   },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
-}

@@ -289,24 +289,30 @@ Page({
     });
     console.log(index, '-------------------index');
     app.globalData.movicesList.splice(index, 1);
+    console.log(app.globalData.movicesList)
     let count = [];
-    app.globalData.movicesList.forEach((e) => {
-      count.push(e.price)
-    });
-    const sum = count.reduce((x, y) => x + y)
-    this.setData({
-      totalPrice: sum
-    });
-    // 删除数组的长度（根据id）
-    // app.globalData.movicesList.
-    console.log(app.globalData.movicesList, '减少-----movicesList')
-    console.log(app.globalData.showMovies, '减少')
-    this.setData({
-      chooseList: [...app.globalData.showMovies],
-      chooseFilms: [...app.globalData.movicesList],
-    });
-    console.log(this.data.chooseFilms, '购物车中的数组的长度');
-    console.log(this.data.chooseList, '弹框现实的数据')
+    if (app.globalData.movicesList.length === 0) {
+      totalPrice: 0
+    }
+    else {
+      app.globalData.movicesList.forEach((e) => {
+        count.push(e.price)
+      });
+      const sum = count.reduce((x, y) => x + y)
+      this.setData({
+        totalPrice: sum
+      });
+      // 删除数组的长度（根据id）
+      // app.globalData.movicesList.
+      console.log(app.globalData.movicesList, '减少-----movicesList')
+      console.log(app.globalData.showMovies, '减少')
+      this.setData({
+        chooseList: [...app.globalData.showMovies],
+        chooseFilms: [...app.globalData.movicesList],
+      });
+      console.log(this.data.chooseFilms, '购物车中的数组的长度');
+      console.log(this.data.chooseList, '弹框现实的数据')
+    }
   },
   // 统一的方法处理增加票数的逻辑问题
   commonIncrease(item) {

@@ -1,0 +1,16 @@
+<view class="container_body">
+  <view class="container_top">
+    <view class="word">
+      <view>60秒检测心率失常</view>
+      <view class="word_second">利用摄像头，AI检测心率失常，为健康保驾护航</view>
+    </view>
+    <image src="../style/image/u232.png" />
+  </view>
+  <view class="container_img">
+    <image src="../style/image/u1527.png"></image>
+  </view>
+  <view class="button">
+    <button wx:if="{{!switchState}}" open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo" type="primary" bindtap="goToMeasuing">立即体验</button>
+    <button  type="primary" bindtap="showToast" wx:if="{{switchState}}">立即体验</button>
+  </view>
+</view>

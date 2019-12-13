@@ -1,0 +1,30 @@
+<view>
+  <view class="userInfo">
+    <view class="border">
+      <view>性别</view>
+      <view>></view>
+    </view>
+    <view class="border">
+      <view>出生年月</view>
+      <view>></view>
+    </view>
+    <view class="border">
+      <view>升高</view>
+      <view>></view>
+    </view>
+    <view class="border">
+      <view>体重</view>
+      <view>></view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 自定义弹窗 -->
+<!--pages/measuring/measuring.wxml-->
+<!--屏幕背景变暗的背景  -->
+<view class="commodity_screen" wx:if="{{showModalStatus}}"></view>
+<!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <!-- 自定义picker-view弹窗  -->
+</view>

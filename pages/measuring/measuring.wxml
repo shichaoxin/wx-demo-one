@@ -1,0 +1,14 @@
+<!--pages/measuring/measuring.wxml-->
+<!--屏幕背景变暗的背景  -->
+<view class="commodity_screen"  wx:if="{{showModalStatus}}"></view>
+<!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <!-- 添加人员信息  -->
+   <button type="primary" bindtap="backHome">拒绝</button>
+  <button type="primary" bindtap="commitgetInfo">允许</button>
+</view>
+
+<!-- 开始测量 -->
+<button type="primary" bindtap="gToMeasure">开始测量</button>
+
+<navigator hover-class="none" target="miniProgram" open-type="exit">返回</navigator>

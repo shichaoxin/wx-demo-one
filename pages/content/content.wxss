@@ -1,0 +1,42 @@
+.container_body {
+  width: 100%;
+  height: 100vh;
+  background: #e9e9e9;
+}
+
+.container_top {
+  width: 100%;
+  height: 352rpx;
+  position: relative;
+}
+
+.word {
+  position: absolute;
+  top: 51rpx;
+  color: #fff;
+  width: 90%;
+  left: 4%;
+  height: 100rpx;
+  text-align: center;
+}
+
+.word_second {
+  font-size: 32rpx;
+  margin-top: 47rpx;
+}
+
+.container_img {
+  width: 80%;
+  height: 65%;
+  position: absolute;
+  top: 18%;
+  left: 6%;
+  border-radius: 32rpx;
+  background: #fff;
+  padding: 10px;
+}
+.button {
+  position: fixed;
+  bottom: 20rpx;
+  right: 10%;
+}
