@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "img-show": "/pages/imgshow/imgshow",
-    "navigation":"/pages/components/nav-bar/navBar"
+    "navigation":"/pages/components/nav-bar/navBar",
+     "show-modal":"/pages/components/show-modal/show-modal"
   },
   "navigationBarTitleText": "最新电影",
   "enablePullDownRefresh": true

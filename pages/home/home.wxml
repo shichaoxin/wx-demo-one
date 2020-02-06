@@ -37,3 +37,4 @@ title="首页"
     </scroll-view>
   </block>
 </view>
+<show-modal showModal="{{showModal}}"/>

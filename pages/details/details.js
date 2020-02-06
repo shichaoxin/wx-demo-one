@@ -21,6 +21,7 @@ Page({
    */
   async onLoad(options) {
     var params = options.data;
+    console.log(app);
     this.setData({
       evenationMoviceId: params
     })
@@ -61,7 +62,7 @@ Page({
       }
       console.log(object, '==============')
     });
-    return 
+    return
   },
 
   openComment() {
@@ -113,8 +114,7 @@ Page({
   async submit(e) {
     this.hideModal();
     const time = pageServices.currentTime();
-    console.log(app.globalData.userInfo);
-    const userInfo = app.globalData.userInfo;
+    let userInfo = app.globalData.userInfo;
     // 组装model
     const evenaTionModel = {};
     evenaTionModel.time = time;

@@ -1,5 +1,5 @@
 const servicesUtils = require('../services/services-movies.js');
-// import servicesUtils from '../services/services-movies.js';
+
 
 const app = getApp()
 var touchStartPosition = 0; //触摸时的原点
@@ -15,15 +15,11 @@ Page({
     imgId: '',
     movicesList: [],
     currentPage: 1,
-    totalList: []
+    totalList: [],
   },
 
 
   async onLoad() {
-    // getTitleServices.getTilteMessage().then((val) => {
-    //   console.log(val);
-    // })
-    // this.index = this.data.titleList.length;
     this.index = 0;
     const result = await servicesUtils.getTilteMessage();
     this.setData({
@@ -35,6 +31,23 @@ Page({
       imgId: this.data.titleList[0]._id
     });
     await this.getInit(this.data.imgId);
+    // 判断是否用户授权
+    wx.getSetting({
+      success:res=>{
+        if (res.authSetting['scope.userInfo']) {
+          this.setData({showModal: false})
+          wx.getUserInfo({
+            success: res=>{
+             // 存入缓存
+             wx.setStorageSync('userInfo', JSON.stringify(res.userInfo))
+              app.globalData.userInfo = res.userInfo;
+            }
+          })
+        } else {
+          this.setData({ showModal: true })
+        }
+      }
+    })
   },
   // 点击选择信息 
   async getChange(e) {
@@ -113,7 +126,7 @@ Page({
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
     }
-    if(result.val.length === 0) {
+    if (result.val.length === 0) {
       wx.showToast({
         icon: 'none',
         title: '已经到底了....',

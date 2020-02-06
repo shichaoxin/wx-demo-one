@@ -14,7 +14,41 @@ Page({
     countTimer: null, // 设置 定时器 初始为null,
     countNum: null,
     controller: false,
-    countStep: 1
+    countStep: 1,
+    delBtnWidth: 160,
+    data: [{
+      content: "1",
+      right: 0
+    }, {
+      content: "2",
+      right: 0
+    }, {
+      content: "3",
+      right: 0
+    }, {
+      content: "4",
+      right: 0
+    }, {
+      content: "5",
+      right: 0
+    }, {
+      content: "6",
+      right: 0
+    }, {
+      content: "7",
+      right: 0
+    }, {
+      content: "8",
+      right: 0
+    }, {
+      content: "9",
+      right: 0
+    }, {
+      content: "10",
+      right: 0
+    }],
+    isScroll: true,
+    windowHeight: 0,
 
   },
   //事件处理函数
@@ -25,6 +59,14 @@ Page({
   },
   onLoad: function(options) {
     console.log(options.sendinfo)
+      var that = this;
+      wx.getSystemInfo({
+        success: function (res) {
+          that.setData({
+            windowHeight: res.windowHeight
+          });
+        }
+      });
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -109,7 +151,16 @@ Page({
     ctx.stroke(); //对当前路径进行描边
     ctx.draw();
   },
-
+  // 分享
+  onShareAppMessage: function() {
+    console.log('分享了====================')
+    // return {
+    //   title: 'xxxx邀请函', //转发页面的标题
+    //   path: '/pages/mine/agent/agent?user_id=' + getApp().globalData.openId  //转发页面的路径以及携带的参数
+    //  //多参数可以这么传
+    //   path: '/pages/mine/agent/agent?user_id=' + getApp().globalData.openId + "&id=" + this.data.id
+    // }
+  },
   countInterval: function() {
     // 设置倒计时 定时器 每1000毫秒执行一次，计数器count+1 ,耗时60秒绘一圈
     this.countTimer = setInterval(() => {
@@ -170,6 +221,62 @@ Page({
         controller: false
       })
     }
+  },
+  drawStart: function (e) {
+    // console.log("drawStart");  
+    var touch = e.touches[0]
+
+    for (var index in this.data.data) {
+      var item = this.data.data[index]
+      item.right = 0
+    }
+    this.setData({
+      data: this.data.data,
+      startX: touch.clientX,
+    })
+
+  },
+  drawMove: function (e) {
+    var touch = e.touches[0]
+    var item = this.data.data[e.currentTarget.dataset.index]
+    var disX = this.data.startX - touch.clientX
+
+    if (disX >= 20) {
+      if (disX > this.data.delBtnWidth) {
+        disX = this.data.delBtnWidth
+      }
+      item.right = disX
+      this.setData({
+        isScroll: false,
+        data: this.data.data
+      })
+    } else {
+      item.right = 0
+      this.setData({
+        isScroll: true,
+        data: this.data.data
+      })
+    }
+  },
+  drawEnd: function (e) {
+    var item = this.data.data[e.currentTarget.dataset.index]
+    if (item.right >= this.data.delBtnWidth / 2) {
+      item.right = this.data.delBtnWidth
+      this.setData({
+        isScroll: true,
+        data: this.data.data,
+      })
+    } else {
+      item.right = 0
+      this.setData({
+        isScroll: true,
+        data: this.data.data,
+      })
+    }
+  },
+
+  delItem: function (e) {
+
   }
 
 })
